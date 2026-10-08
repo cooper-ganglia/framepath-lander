@@ -19,10 +19,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: site
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,7 +28,7 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: site/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
@@ -43,7 +39,6 @@ jobs:
       - name: Build Next.js website
         env:
           GITHUB_PAGES: "true"
-          GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}
         run: npm run build
 
       - name: Disable Jekyll processing
@@ -52,13 +47,12 @@ jobs:
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/out
+          path: out
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
     needs: build
 
