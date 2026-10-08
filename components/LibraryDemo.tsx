@@ -19,6 +19,16 @@ import {
   Film,
 } from "lucide-react";
 import sampleAssets from "./sample-assets.json";
+
+
+const basePath =
+  process.env.NODE_ENV === "production"
+    ? "/framepath-lander"
+    : "";
+
+const mediaUrl = (path: string) => `${basePath}${path}`;
+
+
 export const assets = sampleAssets;
 export type Asset = (typeof assets)[number];
 export function MediaImage({
@@ -74,7 +84,7 @@ export function MediaImage({
           playsInline
           preload="metadata"
           poster={`/assets/media-${index}.webp`}
-          src={assets[index].video}
+          src={mediaUrl(assets[index].video)}
           aria-label={`Play ${assets[index].title}`}
         />
       ) : (
