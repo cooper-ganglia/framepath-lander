@@ -2994,7 +2994,6 @@ h2 span:hover {
 .plan-lockup img {
   width: 170px;
   height: auto;
-  filter: drop-shadow(0 2px 2px #10204488) drop-shadow(0 0 1px #102044aa);
 }
 .plan-lockup > span {
   color: var(--ink);
