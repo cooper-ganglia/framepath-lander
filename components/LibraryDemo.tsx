@@ -34,6 +34,7 @@ const mediaUrl = (path: string) => `${basePath}${path}`;
 export const assets = sampleAssets;
 export type Asset = (typeof assets)[number];
 
+
 export function MediaImage({
   index,
   className = "",
@@ -47,50 +48,51 @@ export function MediaImage({
 }) {
   const [frame, setFrame] = useState<number | null>(null);
 
+  const thumbnail = mediaUrl(`/assets/media-${index}.webp`);
+  const scrubSheet = mediaUrl(`/assets/scrub-${index}.webp`);
+  const video = mediaUrl(assets[index].video);
+
   return (
     <span
-      onPointerMove={
-        interactive
-          ? undefined
-          : (event) => {
-              const bounds =
-                event.currentTarget.getBoundingClientRect();
-
-              setFrame(
-                Math.min(
-                  11,
-                  Math.max(
-                    0,
-                    Math.floor(
-                      ((event.clientX - bounds.left) /
-                        bounds.width) *
-                        12,
-                    ),
-                  ),
-                ),
-              );
-            }
-      }
-      onPointerLeave={() => setFrame(null)}
       className={`media-image media-${index} ${className}`}
-    >
-      <Image
-        src={mediaUrl(`/assets/media-${index}.webp`)}
-        alt={
-          assets[index].title +
-          " — supplied sample footage"
-        }
-        fill
-        sizes="(max-width: 720px) 50vw, 500px"
-        loader={({ width }) =>
-          mediaUrl(
-            `/assets/media-${index}${
-              width <= 400 ? "-small" : ""
-            }.webp`,
+      onPointerMove={(event) => {
+        if (interactive) return;
+        if (event.pointerType === "touch") return;
+
+        const rect = event.currentTarget.getBoundingClientRect();
+        if (!rect.width) return;
+
+        const progress = Math.max(
+          0,
+          Math.min(
+            1,
+            (event.clientX - rect.left) / rect.width
           )
-        }
-        priority={priority}
-        style={{ objectFit: "cover" }}
+        );
+
+        setFrame(Math.min(11, Math.floor(progress * 12)));
+      }}
+      onPointerLeave={() => setFrame(null)}
+      style={{
+        position: "relative",
+        display: "block",
+        overflow: "hidden",
+      }}
+    >
+      <img
+        src={thumbnail}
+        alt={`${assets[index].title} — sample footage`}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          pointerEvents: "none",
+        }}
       />
 
       {interactive ? (
@@ -99,23 +101,24 @@ export function MediaImage({
           controls
           playsInline
           preload="metadata"
-          poster={mediaUrl(
-            `/assets/media-${index}.webp`,
-          )}
-          src={mediaUrl(assets[index].video)}
+          poster={thumbnail}
+          src={video}
           aria-label={`Play ${assets[index].title}`}
         />
       ) : (
         frame !== null && (
           <span
-            className="scrub-frame"
+            aria-hidden="true"
             style={{
-              backgroundImage: `url(${mediaUrl(
-                `/assets/scrub-${index}.webp`,
-              )})`,
-              backgroundPosition: `${
-                (frame / 11) * 100
-              }% center`,
+              position: "absolute",
+              inset: 0,
+              zIndex: 3,
+              display: "block",
+              backgroundImage: `url("${scrubSheet}")`,
+              backgroundSize: "1200% 100%",
+              backgroundPosition: `${(frame / 11) * 100}% center`,
+              backgroundRepeat: "no-repeat",
+              pointerEvents: "none",
             }}
           />
         )
@@ -123,6 +126,7 @@ export function MediaImage({
     </span>
   );
 }
+
 
 export default function LibraryDemo() {
   const [query, setQuery] = useState("");
