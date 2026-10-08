@@ -18,95 +18,47 @@ import {
   Play,
   Film,
 } from "lucide-react";
-export const assets = [
-  {
-    title: "Stadium at blue hour",
-    file: "CAM_A_0047.MOV",
-    library: "Sports",
-    tags: ["Stadium", "Drone", "Exterior"],
-    time: "2:06",
-    quality: "4K",
-    size: "204 MB",
-    person: "",
-    location: "Main stadium",
-    index: 0,
-  },
-  {
-    title: "The crowd comes alive",
-    file: "CAM_B_0128.MOV",
-    library: "Sports",
-    tags: ["Crowd", "Night", "Baseball"],
-    time: "0:48",
-    quality: "4K",
-    size: "96 MB",
-    person: "",
-    location: "Main stadium",
-    index: 1,
-  },
-  {
-    title: "Campus, golden hour",
-    file: "DRONE_0092.MOV",
-    library: "Corporate",
-    tags: ["Campus", "Drone", "Sunset"],
-    time: "1:24",
-    quality: "4K",
-    size: "320 MB",
-    person: "",
-    location: "North campus",
-    index: 2,
-  },
-  {
-    title: "A story worth keeping",
-    file: "INTERVIEW_0021.MOV",
-    library: "Corporate",
-    tags: ["Interview", "Engineering"],
-    time: "12:14",
-    quality: "1080p",
-    size: "4.8 GB",
-    person: "Morgan Lee",
-    location: "Studio B",
-    index: 3,
-  },
-  {
-    title: "Building what comes next",
-    file: "SITE_0034.MOV",
-    library: "Construction",
-    tags: ["Construction", "Progress"],
-    time: "3:18",
-    quality: "4K",
-    size: "612 MB",
-    person: "",
-    location: "North building",
-    index: 4,
-  },
-  {
-    title: "One unforgettable night",
-    file: "EVENT_0116.MOV",
-    library: "Events",
-    tags: ["Live event", "Crowd", "Night"],
-    time: "1:36",
-    quality: "4K",
-    size: "256 MB",
-    person: "",
-    location: "Main venue",
-    index: 5,
-  },
-];
+import sampleAssets from "./sample-assets.json";
+export const assets = sampleAssets;
 export type Asset = (typeof assets)[number];
 export function MediaImage({
   index,
   className = "",
   priority = false,
+  interactive = true,
 }: {
   index: number;
   className?: string;
   priority?: boolean;
+  interactive?: boolean;
 }) {
+  const [frame, setFrame] = useState<number | null>(null);
   return (
-    <span className={`media-image media-${index} ${className}`}>
+    <span
+      onPointerMove={
+        interactive
+          ? undefined
+          : (event) => {
+              const bounds = event.currentTarget.getBoundingClientRect();
+              setFrame(
+                Math.min(
+                  11,
+                  Math.max(
+                    0,
+                    Math.floor(
+                      ((event.clientX - bounds.left) / bounds.width) * 12,
+                    ),
+                  ),
+                ),
+              );
+            }
+      }
+      onPointerLeave={() => setFrame(null)}
+      className={`media-image media-${index} ${className}`}
+    >
       <Image
         src={`/assets/media-${index}.webp`}
-        alt={assets[index].title + " — illustrative generated media"}
+        alt={assets[index].title + " — supplied sample footage"}
         fill
         sizes="(max-width: 720px) 50vw, 500px"
         loader={({ width }) =>
@@ -115,6 +67,27 @@ export function MediaImage({
         priority={priority}
         style={{ objectFit: "cover" }}
       />
+      {interactive ? (
+        <video
+          className="sample-video"
+          controls
+          playsInline
+          preload="metadata"
+          poster={`/assets/media-${index}.webp`}
+          src={assets[index].video}
+          aria-label={`Play ${assets[index].title}`}
+        />
+      ) : (
+        frame !== null && (
+          <span
+            className="scrub-frame"
+            style={{
+              backgroundImage: `url(/assets/scrub-${index}.webp)`,
+              backgroundPosition: `${(frame / 11) * 100}% center`,
+            }}
+          />
+        )
+      )}
     </span>
   );
 }
@@ -159,7 +132,7 @@ export default function LibraryDemo() {
           <HardDrive size={12} /> Local installation
         </span>
         <span className="illustrative">
-          Interactive illustration · fictional media
+          Interactive demo · real sample footage
         </span>
       </div>
       <div className="demo-shell">
@@ -216,12 +189,12 @@ export default function LibraryDemo() {
           <label className="demo-search">
             <Search size={18} />
             <span className="sr-only">
-              Search illustrative media by title, tags, people or location
+              Search sample footage by title, tags, people or location
             </span>
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Try ‘drone’, ‘night’, or ‘Morgan’"
+              placeholder="Try ‘drone’, ‘music’, or ‘Joe’"
             />
             <kbd>⌕</kbd>
           </label>
@@ -235,10 +208,7 @@ export default function LibraryDemo() {
               >
                 {[
                   "All libraries",
-                  "Sports",
-                  "Corporate",
-                  "Events",
-                  "Construction",
+                  ...new Set(assets.map((a) => a.library)),
                 ].map((v) => (
                   <option key={v}>{v}</option>
                 ))}
@@ -310,14 +280,17 @@ export default function LibraryDemo() {
                     onClick={() => setDetail(a)}
                     aria-label={`Inspect ${a.title}`}
                   >
-                    <MediaImage index={a.index} priority={a.index < 3} />
+                    <MediaImage
+                      index={a.index}
+                      priority={a.index < 3}
+                      interactive={false}
+                    />
                     <span className="preview-hint">
-                      <Play size={18} /> Inspect clip
+                      <Play size={18} /> Play clip
                     </span>
                     <span className="tech-overlay">
                       {a.size} · <b>{a.quality}</b> · {a.time}
                     </span>
-                    <span className="scrub-line" />
                   </button>
                   <label className="card-checkbox">
                     <input
@@ -368,7 +341,7 @@ export default function LibraryDemo() {
           )}
           <p className="demo-note" aria-live="polite">
             {notice ||
-              "Try searching, filtering, selecting a card, or opening a clip."}
+              "Search or filter the clips, move across a thumbnail to scrub, then open a clip to play."}
           </p>
         </div>
       </div>
@@ -389,7 +362,7 @@ export default function LibraryDemo() {
           </button>
           <MediaImage index={detail.index} />
           <div className="asset-dialog-body">
-            <span className="eyebrow">Illustrative asset detail</span>
+            <span className="eyebrow">Sample footage</span>
             <h3>{detail.title}</h3>
             <p>
               {detail.file} · {detail.quality} · {detail.time} · {detail.size}
@@ -399,14 +372,15 @@ export default function LibraryDemo() {
                 <span key={t}>{t}</span>
               ))}
             </div>
-            <p>
-              <MapPin size={14} /> {detail.location}{" "}
-              {detail.person && ` · ${detail.person}`}
-            </p>
+            {(detail.location || detail.person) && (
+              <p>
+                <Users size={14} /> {detail.person || detail.location}
+              </p>
+            )}
             <p className="demo-note">
-              This website shows a still-image illustration. In Framepath,
-              generated browser proxies provide playback and authorized users
-              can download the original.
+              Play, pause, seek, adjust audio, or expand the player. This sample
+              uses an optimized browser copy; your supplied original stays
+              unchanged. Tags and library groupings are demonstration metadata.
             </p>
             <Link
               href="#features"

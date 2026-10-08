@@ -202,18 +202,18 @@ export default function Home() {
                 </li>
               </ul>
               <Link href="#library-demo" className="text-link">
-                Try the illustrated library <ArrowUpRight size={16} />
+                Try the sample library <ArrowUpRight size={16} />
               </Link>
             </div>
             <div className="search-visual">
               <div className="mini-search">
                 <Search size={19} />
-                <span>stadium</span>
+                <span>drone</span>
                 <span className="key-hint">KEYWORD SEARCH</span>
               </div>
               <div className="filter-chips">
                 <span>
-                  Library: Sports <ChevronRight size={12} />
+                  Library: Archive <ChevronRight size={12} />
                 </span>
                 <span>Tag: Drone</span>
                 <span>Resolution: 4K</span>
@@ -221,22 +221,22 @@ export default function Home() {
               <div className="search-result">
                 <MediaImage index={0} />
                 <div>
-                  <span className="tiny-label">SPORTS LIBRARY</span>
-                  <h3>Stadium at blue hour</h3>
-                  <p>CAM_A_0047.MOV</p>
+                  <span className="tiny-label">ARCHIVE LIBRARY</span>
+                  <h3>Drone footage</h3>
+                  <p>drone_footage_clip.mov</p>
                   <div className="chips">
-                    <span>Stadium</span>
+                    <span>Aerial</span>
                     <span>Drone</span>
                     <span>Exterior</span>
                   </div>
-                  <span className="meta-line">204 MB · 4K · 2:06</span>
+                  <span className="meta-line">376 MB · 2160p · 0:25</span>
                 </div>
               </div>
               <div className="metadata-lines">
                 <div>
                   <Tags size={14} />
                   <span>Tags</span>
-                  <b>Stadium, Drone, Exterior</b>
+                  <b>Aerial, Drone, Exterior</b>
                 </div>
                 <div>
                   <Folder size={14} />
@@ -246,7 +246,7 @@ export default function Home() {
                 <div>
                   <ShieldCheck size={14} />
                   <span>Access</span>
-                  <b>Sports · Editor</b>
+                  <b>Archive · Editor</b>
                 </div>
               </div>
               <small className="visual-caption">
@@ -259,27 +259,27 @@ export default function Home() {
               <MediaImage index={3} />
               <div className="preview-controls">
                 <Film size={17} />
-                <span>INTERVIEW_0021.MOV</span>
-                <span>12:14</span>
+                <span>joe_writing_clip.mov</span>
+                <span>0:05</span>
               </div>
               <div className="preview-metadata">
                 <div>
                   <span className="tiny-label">PEOPLE</span>
                   <b>
-                    <Users size={15} /> Morgan Lee
+                    <Users size={15} /> Joe
                   </b>
-                  <small>Engineer · Example person</small>
+                  <small>Sample footage · filename association</small>
                 </div>
                 <div>
                   <span className="tiny-label">TAGS</span>
                   <div className="chips">
-                    <span>Interview</span>
-                    <span>Engineering</span>
+                    <span>Writing</span>
+                    <span>Detail</span>
                   </div>
                 </div>
               </div>
               <small className="visual-caption">
-                Illustrative preview · generated still image
+                Playable preview · supplied sample footage
               </small>
             </div>
             <div className="feature-copy">
@@ -475,7 +475,7 @@ export default function Home() {
           </div>
           <div className="segment-visual">
             <div className="segment-header">
-              <span>CAM_A_0047.MOV · 42:18</span>
+              <span>summit17_music_clip_2.mov · 0:11</span>
               <span className="roadmap-badge">CONCEPT PREVIEW</span>
             </div>
             <MediaImage index={1} />
@@ -497,8 +497,8 @@ export default function Home() {
             <div className="segment-match">
               <Search size={19} />
               <div>
-                <b>Crowd cheering in the stands</b>
-                <span>12:04 → 12:18 · Illustrative timestamped match</span>
+                <b>Live music at Summit 17</b>
+                <span>Concept only · sample footage is playable</span>
               </div>
             </div>
           </div>

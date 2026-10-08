@@ -43,3 +43,9 @@ Confirm delivery recipient for public launch; configure a server email/CRM endpo
 Raised small text to a 16px minimum and the hero subtitle to 19px (18px on mobile). Extended the hero gradient over “ever captured,” added gradient emphasis and hover motion to section headings, expanded the header background to the viewport, and added supplied logo lockups to the three plans. Managed includes a bold Connect subtitle. Reduced-motion preferences disable gradient transitions.
 
 Lint, TypeScript, static build and export checks passed. Browser inspection at 1280px and 390px confirmed no page-level horizontal overflow and a full-width header; mobile navigation reaches pricing. The actual product and reference files remain unchanged.
+
+## Supplied video revision
+
+Replaced generated posters with frames from all seven user-supplied clips. Optimized H.264/AAC proxies preserve full duration. The full-length film uses a lighter 540p copy to fit hosting limits. Library cursor scrubbing uses 12 extracted frames per clip; native video controls work in asset details and page previews. Filename, source size, resolution, and duration are real; tags and grouping remain sample metadata. Local preview now serves MP4 MIME types and byte-range requests for seeking.
+
+Browser verification: drone playback advanced with readyState 4 and no media error; seek interaction worked; music keyword search returned two samples; cursor motion changed actual contact-sheet positions. Mobile player is contained within the dialog at 390px with no horizontal page overflow.
