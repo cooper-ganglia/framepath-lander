@@ -24,12 +24,11 @@ import sampleAssets from "./sample-assets.json";
 
 // GitHub Pages serves this repository under /framepath-lander.
 // Prefix public media paths in the production deployment.
-const basePath =
-  process.env.NODE_ENV === "production"
-    ? "/framepath-lander"
-    : "";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const mediaUrl = (path: string) => `${basePath}${path}`;
+
 
 export const assets = sampleAssets;
 export type Asset = (typeof assets)[number];
