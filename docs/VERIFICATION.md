@@ -37,3 +37,9 @@ The real MAM product, media, database, migrations, and reference documents were 
 ## Remaining
 
 Confirm delivery recipient for public launch; configure a server email/CRM endpoint if direct submission is desired; connect approved Framepath.ai hosting/domain; add approved legal/privacy content if collecting visitor data. Current email draft fallback is functional and explicitly disclosed.
+
+## Typography and branding revision
+
+Raised small text to a 16px minimum and the hero subtitle to 19px (18px on mobile). Extended the hero gradient over “ever captured,” added gradient emphasis and hover motion to section headings, expanded the header background to the viewport, and added supplied logo lockups to the three plans. Managed includes a bold Connect subtitle. Reduced-motion preferences disable gradient transitions.
+
+Lint, TypeScript, static build and export checks passed. Browser inspection at 1280px and 390px confirmed no page-level horizontal overflow and a full-width header; mobile navigation reaches pricing. The actual product and reference files remain unchanged.

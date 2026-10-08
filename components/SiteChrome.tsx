@@ -20,46 +20,48 @@ export function Header() {
         Skip to content
       </Link>
       <header className="header">
-        <Link href="/" aria-label="Framepath home" className="brand">
-          <Image
-            src="/assets/logo-optimized.png"
-            width={158}
-            height={45}
-            alt="Framepath"
-            priority
-          />
-        </Link>
-        <nav
-          id="mobile-menu"
-          aria-label="Main navigation"
-          className={open ? "nav open" : "nav"}
-        >
-          {links.map(([name, url]) => (
-            <Link key={name} href={url} onClick={() => setOpen(false)}>
-              {name}
-            </Link>
-          ))}
-          <Link
-            className="button small mobile-cta"
-            href="/#demo"
-            onClick={() => setOpen(false)}
+        <div className="header-inner">
+          <Link href="/" aria-label="Framepath home" className="brand">
+            <Image
+              src="/assets/logo-optimized.png"
+              width={158}
+              height={45}
+              alt="Framepath"
+              priority
+            />
+          </Link>
+          <nav
+            id="mobile-menu"
+            aria-label="Main navigation"
+            className={open ? "nav open" : "nav"}
           >
+            {links.map(([name, url]) => (
+              <Link key={name} href={url} onClick={() => setOpen(false)}>
+                {name}
+              </Link>
+            ))}
+            <Link
+              className="button small mobile-cta"
+              href="/#demo"
+              onClick={() => setOpen(false)}
+            >
+              Request a demo <ArrowUpRight size={16} />
+            </Link>
+          </nav>
+          <Link className="button small header-cta" href="/#demo">
             Request a demo <ArrowUpRight size={16} />
           </Link>
-        </nav>
-        <Link className="button small header-cta" href="/#demo">
-          Request a demo <ArrowUpRight size={16} />
-        </Link>
-        <button
-          type="button"
-          className="menu-toggle"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X /> : <Menu />}
-        </button>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X /> : <Menu />}
+          </button>
+        </div>
       </header>
     </>
   );

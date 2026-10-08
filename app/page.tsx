@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -36,7 +37,7 @@ export default function Home() {
           </div>
           <h1>
             Find any shot your organization
-            <br className="desktop-break" /> has ever <span>captured.</span>
+            <br className="desktop-break" /> has <span>ever captured.</span>
           </h1>
           <p className="hero-copy">
             Turn the storage you already own into a searchable visual library.
@@ -179,7 +180,7 @@ export default function Home() {
               <h2>
                 Less file hunting.
                 <br />
-                <span>More finding.</span>
+                <span>More editing.</span>
               </h2>
               <p>
                 Camera filenames only tell part of the story. Search titles and
@@ -636,7 +637,15 @@ export default function Home() {
             <div className="plan-grid">
               <article>
                 <span className="eyebrow">THE FOUNDATION</span>
-                <h3>Framepath Core</h3>
+                <h3 className="plan-lockup">
+                  <Image
+                    src="/assets/logo-optimized.png"
+                    width={170}
+                    height={41}
+                    alt="Framepath"
+                  />
+                  <span>Core</span>
+                </h3>
                 <p className="plan-subtitle">Self-hosted media management</p>
                 <p>A locally operating library on the storage you control.</p>
                 <ul>
@@ -663,7 +672,15 @@ export default function Home() {
               </article>
               <article className="pro-plan">
                 <span className="eyebrow">PLANNED PREMIUM SOFTWARE</span>
-                <h3>Framepath Pro</h3>
+                <h3 className="plan-lockup">
+                  <Image
+                    src="/assets/logo-optimized.png"
+                    width={170}
+                    height={41}
+                    alt="Framepath"
+                  />
+                  <span>Pro</span>
+                </h3>
                 <p className="plan-subtitle">Advanced local intelligence</p>
                 <p>
                   Planned premium features that can process on customer
@@ -693,9 +710,20 @@ export default function Home() {
               </article>
               <article>
                 <span className="eyebrow">OPTIONAL · PROPOSED SERVICES</span>
-                <h3>Managed & Connect</h3>
+                <h3 className="plan-lockup">
+                  <Image
+                    src="/assets/logo-optimized.png"
+                    width={170}
+                    height={41}
+                    alt="Framepath"
+                  />
+                  <span>Managed</span>
+                </h3>
                 <p className="plan-subtitle">
                   Help operating your installation
+                </p>
+                <p className="plan-connect">
+                  Includes Framepath <strong>Connect</strong>
                 </p>
                 <p>
                   Deployment and ongoing services scoped to your organization.
