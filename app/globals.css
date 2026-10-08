@@ -2986,7 +2986,7 @@ h2 span:hover {
 .plan-lockup {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 1px;
   flex-wrap: wrap;
   margin-bottom: 18px;
   min-height: 80px;
@@ -3007,16 +3007,16 @@ h2 span:hover {
   position: absolute;
   inset: 0;
   background: url("/assets/logo-optimized.png") center / 100% 100% no-repeat;
-  filter: drop-shadow(0.5px 0 0 #172033) drop-shadow(-0.5px 0 0 #172033)
-    drop-shadow(0 0.5px 0 #172033) drop-shadow(0 -0.5px 0 #172033);
+  filter: drop-shadow(0.5px 0 0 #59657966) drop-shadow(-0.5px 0 0 #59657966)
+    drop-shadow(0 0.5px 0 #59657966) drop-shadow(0 -0.5px 0 #59657966);
   clip-path: inset(0 36% 0 21%);
   pointer-events: none;
 }
 .plan-lockup > span:not(.plan-logo) {
   color: var(--ink);
-  font-family: "Arial Black", Arial, sans-serif;
+  font-family: Manrope, Arial, Helvetica, sans-serif;
   font-size: 25px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -0.045em;
 }
 .plan-grid .plan-connect {
@@ -3237,7 +3237,7 @@ h2 span:hover {
     min-height: 0;
   }
   .plan-lockup {
-    gap: 6px;
+    gap: 1px;
   }
   .plan-logo {
     width: 170px;
