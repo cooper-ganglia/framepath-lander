@@ -3362,3 +3362,26 @@ h2 span:hover {
 .plan-grid .pro-plan {
   border-color: #839ae4;
 }
+
+/* Ensure contact-sheet previews appear above thumbnails */
+.thumbnail-open .media-image {
+  position: relative;
+  isolation: isolate;
+}
+
+.thumbnail-open .media-image > img {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.thumbnail-open .scrub-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  background-size: 1200% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
