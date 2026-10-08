@@ -25,9 +25,9 @@ import sampleAssets from "./sample-assets.json";
 // GitHub Pages serves this repository under /framepath-lander.
 // Prefix public media paths in the production deployment.
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const mediaUrl = (path: string) => `${basePath}${path}`;
+const mediaUrl = (path: string) => path;
+
 
 
 export const assets = sampleAssets;
@@ -48,7 +48,7 @@ export function MediaImage({
   const [frame, setFrame] = useState<number | null>(null);
 
   const thumbnail = mediaUrl(`/assets/media-${index}.webp`);
-  const scrubSheet = mediaUrl(`/assets/scrub-${index}.webp`);
+  const scrubSheet = `/framepath/assets/scrub-${index}.webp`;
   const video = mediaUrl(assets[index].video);
 
   return (
