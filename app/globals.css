@@ -3329,3 +3329,36 @@ h2 span:hover {
     height: auto;
   }
 }
+/* Dark plan cards on the light pricing section. */
+.plan-grid article {
+  background: var(--bg);
+  color: var(--text);
+  border-color: #29364f;
+}
+.plan-grid .eyebrow {
+  color: #93d8e4;
+}
+.plan-grid .plan-subtitle,
+.plan-grid .plan-lockup > span:not(.plan-logo),
+.plan-grid .plan-connect strong {
+  color: #f0f4fc;
+}
+.plan-grid p,
+.plan-grid li,
+.plan-grid .plan-connect {
+  color: #bcc7d9;
+}
+.plan-grid li svg {
+  color: var(--cyan);
+}
+.plan-grid .button.secondary {
+  color: #f0f4fc;
+  border-color: #53617c;
+}
+.plan-grid .button.secondary:hover {
+  background: #1c2941;
+  border-color: #85cbdc;
+}
+.plan-grid .pro-plan {
+  border-color: #839ae4;
+}
