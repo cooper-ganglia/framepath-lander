@@ -28,3 +28,5 @@ None. The marketing demonstration is deliberately isolated from the real Framepa
 ## Tooling advisory
 
 Runtime dependency audit currently reports zero vulnerabilities. Five development-only audit entries originate in Next's ESLint plugin → fast-glob → micromatch → braces. The registry currently has no patched braces release for the nested-pattern stack-exhaustion advisory. This toolchain consumes project-owned patterns, is not shipped in the static site, and should be refreshed when a patched upstream dependency is released. No downgrade or forced incompatible audit fix was applied.
+
+Social sharing: Open Graph and Twitter images use the deployed sample host, with a dedicated branded 1200×630 PNG. Update these absolute sample URLs and og:url when moving to the approved Framepath.ai domain. iMessage may cache previously shared URLs; an actual recipient preview has not been independently verified.
