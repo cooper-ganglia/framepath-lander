@@ -638,12 +638,14 @@ export default function Home() {
               <article>
                 <span className="eyebrow">THE FOUNDATION</span>
                 <h3 className="plan-lockup">
-                  <Image
-                    src="/assets/logo-optimized.png"
-                    width={170}
-                    height={41}
-                    alt="Framepath"
-                  />
+                  <span className="plan-logo">
+                    <Image
+                      src="/assets/logo-optimized.png"
+                      width={170}
+                      height={41}
+                      alt="Framepath"
+                    />
+                  </span>
                   <span>Core</span>
                 </h3>
                 <p className="plan-subtitle">Self-hosted media management</p>
@@ -673,12 +675,14 @@ export default function Home() {
               <article className="pro-plan">
                 <span className="eyebrow">PLANNED PREMIUM SOFTWARE</span>
                 <h3 className="plan-lockup">
-                  <Image
-                    src="/assets/logo-optimized.png"
-                    width={170}
-                    height={41}
-                    alt="Framepath"
-                  />
+                  <span className="plan-logo">
+                    <Image
+                      src="/assets/logo-optimized.png"
+                      width={170}
+                      height={41}
+                      alt="Framepath"
+                    />
+                  </span>
                   <span>Pro</span>
                 </h3>
                 <p className="plan-subtitle">Advanced local intelligence</p>
@@ -711,12 +715,14 @@ export default function Home() {
               <article>
                 <span className="eyebrow">OPTIONAL · PROPOSED SERVICES</span>
                 <h3 className="plan-lockup">
-                  <Image
-                    src="/assets/logo-optimized.png"
-                    width={170}
-                    height={41}
-                    alt="Framepath"
-                  />
+                  <span className="plan-logo">
+                    <Image
+                      src="/assets/logo-optimized.png"
+                      width={170}
+                      height={41}
+                      alt="Framepath"
+                    />
+                  </span>
                   <span>Managed</span>
                 </h3>
                 <p className="plan-subtitle">
