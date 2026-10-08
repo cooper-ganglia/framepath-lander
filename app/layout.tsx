@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Your footage. Your storage. Your infrastructure.",
     description:
       "Find any shot your organization has ever captured. Meet Framepath, the local-first media asset management platform by Oddform.",
-    url: "https://framepath.ai",
+    url: "https://cooper-ganglia.github.io/framepath-lander/",
     siteName: "Framepath",
     type: "website",
     images: [

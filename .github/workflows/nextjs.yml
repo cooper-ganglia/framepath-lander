@@ -51,7 +51,7 @@ jobs:
           root = Path("out")
           prefix = b"/framepath"
           pattern = re.compile(
-              rb"(?<!/framepath)/assets/"
+              rb"(?<![A-Za-z0-9_./-])/assets/"
           )
 
           count = 0
