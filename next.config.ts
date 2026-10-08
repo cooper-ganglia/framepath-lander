@@ -1,7 +1,9 @@
 
 import type { NextConfig } from "next";
 
-const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const basePath = process.env.GITHUB_PAGES === "true"
+  ? "/framepath"
+  : "";
 
 const config: NextConfig = {
   turbopack: { root: process.cwd() },
@@ -9,8 +11,7 @@ const config: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   poweredByHeader: false,
-  basePath: isGitHubPages ? "/framepath-lander" : "",
-  assetPrefix: isGitHubPages ? "/framepath-lander" : "",
+  basePath,
 };
 
 export default config;
