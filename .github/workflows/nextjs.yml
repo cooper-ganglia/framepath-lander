@@ -41,6 +41,44 @@ jobs:
           GITHUB_PAGES: "true"
         run: npm run build
 
+
+      - name: Fix GitHub Pages asset paths
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path("out")
+          prefix = "/framepath-lander"
+          pattern = re.compile(
+              rb"(?<!/framepath-lander)/assets/"
+          )
+
+          count = 0
+
+          for file in root.rglob("*"):
+              if not file.is_file():
+                  continue
+              if file.suffix not in {
+                  ".html", ".css", ".js",
+                  ".json", ".xml", ".txt",
+              }:
+                  continue
+
+              original = file.read_bytes()
+              updated, n = pattern.subn(
+                  (prefix + "/assets/").encode(),
+                  original,
+              )
+
+              if n:
+                  file.write_bytes(updated)
+                  count += n
+
+          print(f"Fixed {count} asset references")
+          PY
+
+
       - name: Disable Jekyll processing
         run: touch out/.nojekyll
 
