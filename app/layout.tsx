@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://framepath-marketing-sample.cooper-ganglia.chatgpt.site/assets/framepath-share-v2.png",
+        url: "https://raw.githubusercontent.com/cooper-ganglia/framepath-lander/main/public/assets/social-preview.png",
         type: "image/png",
         width: 1200,
         height: 630,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     images: [
-      "https://framepath-marketing-sample.cooper-ganglia.chatgpt.site/assets/framepath-share-v2.png",
+      "https://raw.githubusercontent.com/cooper-ganglia/framepath-lander/main/public/assets/social-preview.png",
     ],
   },
   icons: { icon: "/assets/mark.png" },
