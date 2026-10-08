@@ -12,7 +12,7 @@
 
 ## Browser
 
-Verified the local production export as well as the development preview in the Codex in-app browser. Actual browser CSS widths checked: 1200 desktop, 853 tablet, and 325 narrow mobile. No horizontal document overflow remains. The browser's existing zoom affects CSS viewport dimensions; these are measured innerWidth values, not assumed device labels.
+Verified the local production export as well as the development preview in the Codex in-app browser. Actual browser CSS widths checked: 1200 desktop, 853 tablet, and 325/390 narrow mobile. No horizontal document overflow remains. The browser's existing zoom affects CSS viewport dimensions; these are measured innerWidth values, not assumed device labels.
 
 - Supplied full-color wordmark and self-hosted typography render.
 - All six media examples load as responsive WebP assets.
@@ -26,7 +26,7 @@ Verified the local production export as well as the development preview in the C
 - Empty required form fields prevent preparation. Valid fictional details produce a mailto draft with a visible “Nothing has been sent yet” state. No external email was sent.
 - Resources route renders with the correct Framepath.ai canonical URL.
 - Current production-origin browser console has no observed errors. Development refresh messages were tooling-only.
-- Reduced-motion CSS removes transitions/transforms and disables smooth scrolling.
+- Browser-emulated reduced motion verified: preference matches, button transition is 0s, and document scrolling is auto. Emulation was reset afterward.
 
 Screenshots are retained under `docs/screenshots/`.
 
