@@ -65,3 +65,7 @@ The existing GitHub Pages workflow used `/framepath`, which produced a live CSS 
 ## Oddform route correction
 
 The public marketing route is `https://oddform.works/framepath/`, which needs the `/framepath` build prefix. The prior direct GitHub Pages check missed this existing proxy route. Restored the original prefix and updated the public Open Graph URL to the Oddform route.
+
+## Media path and hero correction
+
+Restored the interactive sample library to the hero and moved the genuine application capture into the product story. Public media paths now apply the deployment prefix only once: the export rewrites asset literals and previously runtime concatenation added a second prefix, breaking sprite sheets and video sources. Both sample media and product walkthroughs use the shared idempotent helper.

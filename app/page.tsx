@@ -68,11 +68,7 @@ export default function Home() {
             </span>
           </div>
           <div className="hero-product" id="product">
-            <ProductCapture
-              name="01-media-library.png"
-              alt="Media library overview"
-              priority
-            />
+            <LibraryDemo />
           </div>
           <p className="product-caption">
             <span>YOUR ENTIRE VISUAL HISTORY. ONE CLEAR PICTURE.</span>
@@ -363,19 +359,22 @@ export default function Home() {
         </section>
         <section className="sample-explore wrap section-space">
           <div className="section-intro">
-            <span className="eyebrow">TRY THE SAMPLE LIBRARY</span>
+            <span className="eyebrow">INSIDE FRAMEPATH</span>
             <h2>
               A little less searching.
               <br />
               <span>A lot more context.</span>
             </h2>
             <p>
-              Search the approved footage, combine tag and duration filters,
-              scrub a card, and open a playable clip. This is a browser-local
-              demonstration, separate from any Framepath installation.
+              A real view of the Framepath application, captured from the
+              approved sample library. Enlarge it to explore the interface in
+              detail.
             </p>
           </div>
-          <LibraryDemo />
+          <ProductCapture
+            name="01-media-library.png"
+            alt="Media library overview"
+          />
         </section>
         <section id="workflow" className="workflow light-section">
           <div className="wrap section-space">

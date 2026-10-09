@@ -21,11 +21,7 @@ import {
 import sampleAssets from "./sample-assets.json";
 import SampleFilters, { emptyFilter, type SampleFilter } from "./SampleFilters";
 
-// GitHub Pages serves this repository under /framepath-lander.
-// Prefix public media paths in the production deployment.
-
-const mediaUrl = (path: string) =>
-  `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${path}`;
+import { mediaUrl } from "./media-url";
 
 export const assets = sampleAssets;
 export type Asset = (typeof assets)[number];

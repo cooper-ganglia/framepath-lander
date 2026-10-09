@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { Maximize2, X } from "lucide-react";
-const assetPath = (name: string) =>
-  `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/assets/product/${name}`;
+import { mediaUrl } from "./media-url";
+const assetPath = (name: string) => mediaUrl(`/assets/product/${name}`);
 export function ProductCapture({
   name,
   alt,
