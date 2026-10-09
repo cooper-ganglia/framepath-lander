@@ -33,3 +33,9 @@ The later user direction clarified that this is a simple sample marketing site i
 - Commercial packaging is unsettled. Core is not described as universally free, and Pro has no launched license model.
 - Oddform is the developer. Sequence Creative is not presented as a parent/subsidiary or required partner.
 - No unavailable sign-in, policies, certifications or third-party integrations are implied.
+
+## October 9 product update
+
+The new MARKETING_AGENT_UPDATE_PROMPT.md and verified application status/decisions override earlier AI descriptions. Optional local Whisper, transcript search/seek, corrections and captions are implemented. Tags/People/Locations are installation-wide; Projects/Collections remain Library-scoped and media results/counts retain access checks. Automatic shot authoring/detection, ranked retrieval and wider visual AI remain planned. Implementation does not determine Core/Pro entitlement.
+
+The update preserves approved headlines, gradient accents, navy plan cards, logo treatment, seven supplied videos, mailto conversion and branded sharing metadata. Product captures and three edited walkthroughs add real proof; the interactive sample adds Include/Exclude tag and duration filtering, without browser AI or product API access.

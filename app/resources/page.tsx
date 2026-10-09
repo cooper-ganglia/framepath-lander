@@ -28,6 +28,7 @@ export default function Resources() {
         <div className="resource-layout wrap">
           <nav className="resource-sidebar" aria-label="Resource sections">
             <Link href="#status">Current product</Link>
+            <Link href="#transcription">Local transcription</Link>
             <Link href="#roadmap">What’s on the roadmap</Link>
             <Link href="#formats">Media support</Link>
             <Link href="#deployment">Deployment guide</Link>
@@ -38,7 +39,7 @@ export default function Resources() {
           <div className="resource-content">
             <section id="status">
               <span className="resource-status">
-                ACTIVE DEVELOPMENT · REVIEWED OCTOBER 8, 2026
+                ACTIVE DEVELOPMENT · REVIEWED OCTOBER 9, 2026
               </span>
               <h2>A useful core, built locally.</h2>
               <p>
@@ -61,17 +62,22 @@ export default function Resources() {
                   25-frame cursor-controlled video card contact sheets.
                 </li>
                 <li>
-                  Keyword, filename, and relationship search; conventional
-                  metadata filters; paginated grid, list, and indexed folder
+                  Keyword, filename, relationship, and transcript search; a
+                  unified filter editor with Include/Exclude, All/Any matching,
+                  comparisons, precise ranges, active chips, and device-local
+                  saved/pinned filters. Paginated grid, list, and indexed folder
                   views.
                 </li>
                 <li>
-                  Library-scoped Tags, People, Locations, Projects, and
-                  Collections, with profile images and related authorized media.
+                  Installation-wide Tags, People, and Locations with shared
+                  profiles; library-scoped Projects and Collections. Associated
+                  media and usage counts obey Library permissions.
                 </li>
                 <li>
-                  Multi-selection, atomic bulk metadata editing, and authorized
-                  original/ZIP downloads.
+                  Multi-selection, atomic Add/Remove/Overwrite metadata
+                  operations, authorized original/ZIP downloads, and available
+                  generated-quality downloads. Recoverable catalog
+                  deletion/restoration leaves original files untouched.
                 </li>
                 <li>
                   Local accounts, roles, per-Library permission overrides, and
@@ -79,7 +85,8 @@ export default function Resources() {
                 </li>
                 <li>
                   Persistent background processing, grouped scan history,
-                  per-file logs, retry, and cancellation.
+                  per-file logs, retry, cancellation, and recoverable
+                  finished-history clearing.
                 </li>
                 <li>
                   Existing-folder role mappings and explicitly confirmed new
@@ -92,6 +99,44 @@ export default function Resources() {
                 connected storage. A completed upload/managed ingest workflow
                 was not found. Media-upload, copy verification, and Incoming
                 review are treated as roadmap capabilities.
+              </p>
+            </section>
+            <section id="transcription">
+              <span className="resource-status">
+                IMPLEMENTED · OPTIONAL LOCAL WHISPER
+              </span>
+              <h2>Search the words. Find the passage.</h2>
+              <p>
+                Queue transcription for selected indexed audio/video clips, or
+                optionally queue newly discovered media. Administrators choose a
+                supported default Whisper model; selecting an unavailable
+                supported model queues its download. Model acquisition needs
+                connectivity, while inference uses the installed local runtime
+                and model on your server.
+              </p>
+              <ul>
+                <li>
+                  Timestamped passages beside the viewer, transcript search,
+                  click-to-seek, and timestamp links from asset keyword matches.
+                </li>
+                <li>
+                  Saved current-source transcripts as optional video captions,
+                  with Show/Hide controls.
+                </li>
+                <li>
+                  Authorized metadata editors can correct passage wording and
+                  Save/Cancel while keeping timestamps intact. Saved corrections
+                  update search and captions; conflicting edits are rejected.
+                </li>
+              </ul>
+              <p className="note">
+                This is keyword/text search, not semantic visual search. A new
+                transcription run is not promised to merge earlier corrections.
+                Speaker diarization, translation, subtitle export, caption
+                burning, word-level editing, and transcript version browsing are
+                not implemented. No GPU, processing-speed, accuracy, or
+                language-coverage guarantee is made. Implementation does not
+                settle Core/Pro entitlement or pricing.
               </p>
             </section>
             <section id="roadmap">
@@ -115,8 +160,9 @@ export default function Resources() {
                   <tr>
                     <td>Segments & shot retrieval</td>
                     <td>
-                      Existing marker playback and person-associated segment
-                      views are present. Segment creation/editing, automatic
+                      Data foundations and some existing range navigation are
+                      partial. The viewer no longer shows an unfinished Shots &
+                      segments placeholder. Segment authoring, automatic shot
                       detection, and ranked shot search remain planned.
                     </td>
                   </tr>
@@ -130,9 +176,8 @@ export default function Resources() {
                   <tr>
                     <td>AI media analysis</td>
                     <td>
-                      Semantic search, transcription, OCR, visual descriptions,
-                      embeddings, and authorized face identification are
-                      planned.
+                      Semantic search, OCR, visual descriptions, embeddings, and
+                      authorized face identification are planned.
                     </td>
                   </tr>
                   <tr>
@@ -191,7 +236,10 @@ export default function Resources() {
                   card contact sheets.
                 </li>
                 <li>Images: generated thumbnails and technical information.</li>
-                <li>Audio: native browser playback where supported.</li>
+                <li>
+                  Audio: native playback where supported and distinct audio-card
+                  illustrations; these are not measured waveforms.
+                </li>
                 <li>PDF: first-page previews using Poppler.</li>
                 <li>Text/Markdown: bounded, escaped plain-text previews.</li>
                 <li>
@@ -200,8 +248,10 @@ export default function Resources() {
                 </li>
               </ul>
               <p>
-                Original bytes are separate from generated media. Framepath does
-                not rewrite camera files to make previews.
+                Available generated download-quality options depend on existing
+                renditions; arbitrary instant formats or resolutions are not
+                promised. Original bytes are separate from generated media.
+                Framepath does not rewrite camera files to make previews.
               </p>
             </section>
             <section id="deployment">
@@ -225,8 +275,8 @@ export default function Resources() {
                   mounts.
                 </li>
                 <li>
-                  Separate generated-media capacity for thumbnails, proxies, and
-                  contact sheets.
+                  Separate generated-media capacity for thumbnails, proxies,
+                  contact sheets, and optional Whisper models.
                 </li>
                 <li>
                   Local network browser access and individual local user
@@ -316,15 +366,21 @@ export default function Resources() {
                       "Segment",
                       "A meaningful time range within an asset. Authoring/detection is planned.",
                     ],
-                    ["Collection", "A curated grouping of assets."],
-                    ["Project", "A campaign or production grouping."],
+                    [
+                      "Collection",
+                      "A curated grouping of assets within one Library.",
+                    ],
+                    [
+                      "Project",
+                      "A campaign or production grouping within one Library.",
+                    ],
                     [
                       "Person",
-                      "An individual associated with media, separate from a login account.",
+                      "An installation-wide, manually identified person profile associated with authorized media, separate from a login account. Not automatic face recognition.",
                     ],
                     [
                       "Location",
-                      "A geographical or business place associated with media.",
+                      "An installation-wide place profile associated with authorized media. Optional Google Maps embeds/links use an external service.",
                     ],
                     [
                       "Shoot",

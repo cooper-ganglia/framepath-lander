@@ -23,7 +23,7 @@ No analytics, cookies, scheduler, payment service, or external form integration 
 
 ## Product integration
 
-None. The marketing demonstration is deliberately isolated from the real Framepath installation. Customer authentication, media, catalog, and previews remain local to the MAM. Connect, Pro/local AI, managed operations and optional cloud AI are described as planned/proposed capabilities; this website does not provision them.
+None. The marketing demonstration is deliberately isolated from the real Framepath installation. Customer authentication, media, catalog, and previews remain local to the MAM. Optional local Whisper is implemented in the application. Connect, future Pro visual intelligence, managed operations, and optional cloud AI remain planned/proposed; commercial Whisper entitlement remains undecided. This website neither runs inference nor provisions these services.
 
 ## Tooling advisory
 

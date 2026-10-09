@@ -13,7 +13,6 @@ import {
   Camera,
   Monitor,
   Server,
-  Tags,
   Layers,
   Users,
   Activity,
@@ -21,6 +20,11 @@ import {
 } from "lucide-react";
 import { Header, Footer } from "@/components/SiteChrome";
 import LibraryDemo, { MediaImage } from "@/components/LibraryDemo";
+import {
+  ProductCapture,
+  TranscriptProof,
+  Walkthrough,
+} from "@/components/ProductProof";
 import {
   DemoForm,
   DeploymentModes,
@@ -64,7 +68,11 @@ export default function Home() {
             </span>
           </div>
           <div className="hero-product" id="product">
-            <LibraryDemo />
+            <ProductCapture
+              name="01-media-library.png"
+              alt="Media library overview"
+              priority
+            />
           </div>
           <p className="product-caption">
             <span>YOUR ENTIRE VISUAL HISTORY. ONE CLEAR PICTURE.</span>
@@ -140,7 +148,7 @@ export default function Home() {
                 Folder,
                 "01",
                 "Organize",
-                "Separate Libraries. Shared context. Tags, People, Locations, Projects, and Collections make an archive understandable.",
+                "Branded Libraries. Shared context. Tags, People, and Locations are installation-wide; Projects and Collections belong to each Library.",
               ],
               [
                 Search,
@@ -183,9 +191,9 @@ export default function Home() {
                 <span>More editing.</span>
               </h2>
               <p>
-                Camera filenames only tell part of the story. Search titles and
-                descriptions, connect people and places, and filter the library
-                by useful metadata.
+                Camera filenames only tell part of the story. Search titles,
+                descriptions, and transcript words. Connect people and places,
+                then combine precise metadata filters.
               </p>
               <ul className="check-list">
                 <li>
@@ -205,54 +213,10 @@ export default function Home() {
                 Try the sample library <ArrowUpRight size={16} />
               </Link>
             </div>
-            <div className="search-visual">
-              <div className="mini-search">
-                <Search size={19} />
-                <span>drone</span>
-                <span className="key-hint">KEYWORD SEARCH</span>
-              </div>
-              <div className="filter-chips">
-                <span>
-                  Library: Archive <ChevronRight size={12} />
-                </span>
-                <span>Tag: Drone</span>
-                <span>Resolution: 4K</span>
-              </div>
-              <div className="search-result">
-                <MediaImage index={0} />
-                <div>
-                  <span className="tiny-label">ARCHIVE LIBRARY</span>
-                  <h3>Drone footage</h3>
-                  <p>drone_footage_clip.mov</p>
-                  <div className="chips">
-                    <span>Aerial</span>
-                    <span>Drone</span>
-                    <span>Exterior</span>
-                  </div>
-                  <span className="meta-line">376 MB · 2160p · 0:25</span>
-                </div>
-              </div>
-              <div className="metadata-lines">
-                <div>
-                  <Tags size={14} />
-                  <span>Tags</span>
-                  <b>Aerial, Drone, Exterior</b>
-                </div>
-                <div>
-                  <Folder size={14} />
-                  <span>Project</span>
-                  <b>Season launch</b>
-                </div>
-                <div>
-                  <ShieldCheck size={14} />
-                  <span>Access</span>
-                  <b>Archive · Editor</b>
-                </div>
-              </div>
-              <small className="visual-caption">
-                Illustrative search result · manually cataloged metadata
-              </small>
-            </div>
+            <Walkthrough
+              stem="01-precise-filtering"
+              title="Combine a tag with a precise frame-rate range. Two real clips remain."
+            />
           </div>
           <div className="feature-split reversed">
             <div className="preview-visual">
@@ -340,6 +304,78 @@ export default function Home() {
               </div>
             </article>
           </div>
+        </section>
+        <section
+          className="transcription wrap section-space"
+          id="transcription"
+        >
+          <div className="transcription-heading">
+            <span className="eyebrow">
+              OPTIONAL LOCAL WHISPER · IMPLEMENTED
+            </span>
+            <h2>
+              Find the moment
+              <br />
+              <span>by what was said.</span>
+            </h2>
+            <p>
+              Generate a transcript on your own server, search its words, and
+              jump straight to the matching timestamp. Correct a misheard phrase
+              and use the saved transcript as captions.
+            </p>
+          </div>
+          <TranscriptProof />
+          <div className="transcript-benefits">
+            <article>
+              <span>01 · LOCAL PROCESSING</span>
+              <h3>Your server. Your words.</h3>
+              <p>
+                Queue selected audio or video clips after indexing. Inference
+                runs with the installed local Whisper model; acquiring model
+                files needs connectivity.
+              </p>
+            </article>
+            <article>
+              <span>02 · SEARCH & SEEK</span>
+              <h3>Go straight to the passage.</h3>
+              <p>
+                Find spoken words in asset keyword search or search a clip’s
+                transcript. Click its timestamp to move playback to that moment.
+              </p>
+            </article>
+            <article>
+              <span>03 · CORRECT & CAPTION</span>
+              <h3>Better wording. Same timing.</h3>
+              <p>
+                Authorized editors can Save or Cancel passage corrections. Saved
+                wording updates search and optional captions without changing
+                original media.
+              </p>
+            </article>
+          </div>
+          <p className="proof-note">
+            Local transcription is optional. The library works without AI.
+            Commercial entitlements and license terms are not yet finalized.
+          </p>
+          <Link href="/resources/#transcription" className="text-link">
+            Explore local transcription <ArrowUpRight size={16} />
+          </Link>
+        </section>
+        <section className="sample-explore wrap section-space">
+          <div className="section-intro">
+            <span className="eyebrow">TRY THE SAMPLE LIBRARY</span>
+            <h2>
+              A little less searching.
+              <br />
+              <span>A lot more context.</span>
+            </h2>
+            <p>
+              Search the approved footage, combine tag and duration filters,
+              scrub a card, and open a playable clip. This is a browser-local
+              demonstration, separate from any Framepath installation.
+            </p>
+          </div>
+          <LibraryDemo />
         </section>
         <section id="workflow" className="workflow light-section">
           <div className="wrap section-space">
@@ -456,6 +492,37 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section className="organization-proof wrap section-space">
+          <div className="section-intro">
+            <span className="eyebrow">SHARED CONTEXT. CLEAR ACCESS.</span>
+            <h2>
+              One identity.
+              <br />
+              <span>The right library.</span>
+            </h2>
+            <p>
+              A production team and an events team can share a person or tag
+              profile while seeing only media their Library role allows. Give
+              each Library its own logo and label color; keep Projects and
+              Collections within it.
+            </p>
+          </div>
+          <div className="proof-pair">
+            <ProductCapture
+              name="02-library-picker.png"
+              alt="Branded library picker"
+            />
+            <ProductCapture
+              name="05-folder-browser.png"
+              alt="Indexed folder browser"
+            />
+          </div>
+          <p className="proof-note">
+            Browse the folders you already know, with clickable paths and an
+            indexed directory tree. Storage is mounted on your server; a browser
+            picker does not expose a remote server’s filesystem.
+          </p>
+        </section>
         <section className="roadmap wrap section-space" id="roadmap">
           <div className="roadmap-copy">
             <span className="eyebrow">THE NEXT CHAPTER · IN DEVELOPMENT</span>
@@ -466,8 +533,9 @@ export default function Home() {
             </h2>
             <p>
               The vision: search inside long recordings and surface the exact
-              useful shot. Local AI analysis, transcription, and semantic search
-              are planned enhancements to a useful media library.
+              useful shot. Automatic shot detection, visual descriptions, and
+              semantic search remain planned. Optional local Whisper
+              transcription is already implemented for finding spoken words.
             </p>
             <Link href="/resources/#roadmap" className="text-link">
               See what’s built and what’s next <ArrowUpRight size={16} />
@@ -504,12 +572,11 @@ export default function Home() {
           </div>
           <div className="roadmap-notes">
             <article>
-              <span>LOCAL AI · PLANNED</span>
+              <span>VISUAL AI · PLANNED</span>
               <h3>Intelligence on your terms.</h3>
               <p>
-                Scene descriptions, transcription, OCR, semantic search, and
-                authorized face identification are planned for customer
-                hardware.
+                Scene descriptions, OCR, semantic search, and authorized face
+                identification are planned for customer hardware.
               </p>
             </article>
             <article>
@@ -631,7 +698,8 @@ export default function Home() {
               <p>
                 Tell us about your archive, hardware, and team. We’ll discuss
                 the right deployment. Commercial packaging and license terms are
-                being finalized.
+                being finalized. Optional local Whisper transcription is
+                implemented; its plan entitlement has not yet been assigned.
               </p>
             </div>
             <div className="plan-grid">
@@ -697,11 +765,11 @@ export default function Home() {
                   </li>
                   <li>
                     <Check />
-                    Transcription & shot analysis
+                    Planned shot analysis & visual descriptions
                   </li>
                   <li>
                     <Check />
-                    Local AI processing options
+                    Planned visual AI processing
                   </li>
                   <li>
                     <Check />
@@ -785,7 +853,7 @@ export default function Home() {
               ],
               [
                 "Does Framepath need AI to work?",
-                "No. Browsing, metadata, keyword search, previews, local accounts, and original retrieval form the core workflow. Semantic search and other AI processors are planned enhancements.",
+                "No. Browsing, metadata, keyword search, previews, local accounts, and original retrieval form the core workflow. Optional local Whisper transcription is implemented. Semantic visual search and wider AI analysis remain planned.",
               ],
               [
                 "Can people work remotely?",
@@ -793,7 +861,7 @@ export default function Home() {
               ],
               [
                 "What is available today?",
-                "The active-development application has storage scanning, a searchable catalog, generated previews, metadata, library permissions, bulk editing, and original downloads. Managed upload ingest, advanced duplicate matching, semantic search, automatic shot detection, and managed connectivity remain on the roadmap.",
+                "The active-development application has storage scanning, a searchable catalog, generated previews, metadata, library permissions, bulk editing, original downloads, and optional local Whisper with transcript search, timestamp seeking, corrections, and captions. Managed upload ingest, advanced duplicate matching, semantic search, automatic shot detection, and managed connectivity remain on the roadmap.",
               ],
             ].map(([q, a]) => (
               <details key={q}>

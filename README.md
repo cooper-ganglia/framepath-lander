@@ -41,7 +41,7 @@ Near-black navy with muted product panels, ice-white type, cyan actions, restrai
 
 ## Truthful demonstrations
 
-User-supplied footage is playable through optimized MP4 proxies. Thumbnail scrubbing uses real extracted contact sheets. Original files stay unchanged. Tags and grouping are sample metadata; this is not a connected customer library or processing service. Keyword filtering really works inside the example data. Roadmap shot matching is labeled Concept Preview. AI, upload/verified ingest, advanced duplicate matching, Connect provisioning, and enterprise authentication are not marketed as shipped. Core offer categories have no invented prices or seat limits.
+User-supplied footage is playable through optimized MP4 proxies. Thumbnail scrubbing uses real extracted contact sheets. Original files stay unchanged. Tags and grouping are sample metadata; this is not a connected customer library or processing service. Keyword filtering really works inside the example data. Roadmap shot matching is labeled Concept Preview. Optional local Whisper transcription, corrections and captions are implemented; wider visual AI, upload/verified ingest, advanced duplicate matching, Connect provisioning, and enterprise authentication remain planned. Core offer categories have no invented prices or seat limits.
 
 The authoritative Markdown brief takes precedence over the extended TXT. Product repository inspection found storage scanning and cataloging but no finished media-upload flow. See `docs/REQUIREMENTS.md`.
 

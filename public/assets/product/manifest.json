@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-09",
+  "capture": "real application screenshots; cursor-guided edited sequences",
+  "viewport": [1440, 900],
+  "app_release": "5dbc3addb6737ca2794e0f203715002a7e21a9c4",
+  "transcription_model": "tiny.en",
+  "narration": "locally generated Samantha voice over existing approved aerial derivative",
+  "files": [
+    {
+      "path": "screenshots/01-media-library.png",
+      "bytes": 120697,
+      "sha256": "917b5e2f70109b36f513fa555673c9833b03f77169423312fd26ff0f6ed3d7c6"
+    },
+    {
+      "path": "screenshots/02-library-picker.png",
+      "bytes": 111401,
+      "sha256": "fa9477809de90b821aa346878a2cd9363ce4326bc9c64fd6ff4a33ed66fe342f"
+    },
+    {
+      "path": "screenshots/03-precise-filters.png",
+      "bytes": 65323,
+      "sha256": "6ee19a917d34f5dd0eb8f326bbe78276bbfbbd2365d88fa06c875ffd123fd492"
+    },
+    {
+      "path": "screenshots/04-filtered-results.png",
+      "bytes": 72716,
+      "sha256": "9ac8e14be7891de6e91c62269c4bff6308b11f777e3f061dc12a8176724a0c5f"
+    },
+    {
+      "path": "screenshots/05-folder-browser.png",
+      "bytes": 92732,
+      "sha256": "1af7e1e296ef3f6816bda730af2609c423769032f2c9968309e2c4f26d39d2ec"
+    },
+    {
+      "path": "screenshots/06-bulk-metadata.png",
+      "bytes": 48965,
+      "sha256": "ccec4886e03694494fec106abcacadf356bde32486ef3b45d9352c65832c3cdb"
+    },
+    {
+      "path": "screenshots/07-transcript-captions.png",
+      "bytes": 134308,
+      "sha256": "28c823a9d64cf1d1647e9df73b37549c6f16af291ab3da4707bd0b0d4fb8935e"
+    },
+    {
+      "path": "screenshots/08-transcript-editor.png",
+      "bytes": 149280,
+      "sha256": "c3e3e0427c8f3acab35f6bf19fc7be279f8c7e539e7c2de8fd02325ccbe09141"
+    },
+    {
+      "path": "animations/01-precise-filtering.mp4",
+      "bytes": 358894,
+      "sha256": "a5e8b1bed66256903b1b4e3885f18eac96b02795e6e3ec1cbe4fb20104d28ea1"
+    },
+    {
+      "path": "animations/02-transcript-search-and-seek.mp4",
+      "bytes": 415437,
+      "sha256": "abe67ecf38eba95be9085bbfd4c1ac507558606d911bfcc59f419dbc18f01c92"
+    },
+    {
+      "path": "animations/03-correct-a-transcript.mp4",
+      "bytes": 600452,
+      "sha256": "7abb0329c09962167de8da5d3944890b89c1427dfd35a396fdaa99c9ef981981"
+    },
+    {
+      "path": "posters/01-precise-filtering.png",
+      "bytes": 65323,
+      "sha256": "6ee19a917d34f5dd0eb8f326bbe78276bbfbbd2365d88fa06c875ffd123fd492"
+    },
+    {
+      "path": "posters/02-transcript-search-and-seek.png",
+      "bytes": 134308,
+      "sha256": "28c823a9d64cf1d1647e9df73b37549c6f16af291ab3da4707bd0b0d4fb8935e"
+    },
+    {
+      "path": "posters/03-correct-a-transcript.png",
+      "bytes": 151266,
+      "sha256": "ea3d19b95aac5d4006537c7d91fd3d9e32ec4c71f246cbae10831d59d0681ac2"
+    }
+  ]
+}

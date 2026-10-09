@@ -49,3 +49,15 @@ Lint, TypeScript, static build and export checks passed. Browser inspection at 1
 Replaced generated posters with frames from all seven user-supplied clips. Optimized H.264/AAC proxies preserve full duration. The full-length film uses a lighter 540p copy to fit hosting limits. Library cursor scrubbing uses 12 extracted frames per clip; native video controls work in asset details and page previews. Filename, source size, resolution, and duration are real; tags and grouping remain sample metadata. Local preview now serves MP4 MIME types and byte-range requests for seeking.
 
 Browser verification: drone playback advanced with readyState 4 and no media error; seek interaction worked; music keyword search returned two samples; cursor motion changed actual contact-sheet positions. Mobile player is contained within the dialog at 390px with no horizontal page overflow.
+
+## October 9 product-proof update
+
+Read the new marketing update prompt, asset manifest and capture brief, and checked current product implementation/status read-only. The hero uses a genuine app capture; three native-control walkthroughs show precise filtering, transcript search/seek and saved corrections. Optional local Whisper is identified as implemented, while shot detection and semantic visual AI remain planned. Commercial transcription entitlements are explicitly unresolved.
+
+Asset hashes match the approved pack. No source capture sequences or private installation screenshots were published. Walkthroughs are edited real states with synthesized sample narration, explicitly disclosed; they do not represent inference speed or dialogue from depicted people.
+
+Lint, TypeScript and static build passed; export validation checked 118 asset references. Browser checks at desktop and 390px found no page overflow. Enlarged captures open and Escape closes them. Include Music returns two clips; adding a 12-second maximum returns one; Exclude Music returns five. Cancel preserves applied filters, Clear restores seven, and keyboard arrows adjust the native range. Both transcript walkthroughs switch correctly; native keyboard playback started the 12-second video. All walkthroughs start paused without autoplay. Resources render with the updated product status.
+
+Only marketing files were edited. Product application, original media and references remain unchanged. Existing domain configuration, private Sites audience, approved typography/gradients, navy pricing cards, email draft form and branded sharing image were preserved.
+
+The existing GitHub Pages workflow used `/framepath`, which produced a live CSS 404 at the repository Pages URL. Corrected its build and asset prefix to `/framepath-lander`, matching the actual repository URL; no DNS or hosting audience changes.

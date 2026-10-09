@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
@@ -13,14 +14,22 @@ import {
   List,
   X,
   ArrowUpRight,
-  SlidersHorizontal,
   HardDrive,
   Play,
   Film,
 } from "lucide-react";
 import sampleAssets from "./sample-assets.json";
+import SampleFilters, { emptyFilter, type SampleFilter } from "./SampleFilters";
+
+// GitHub Pages serves this repository under /framepath-lander.
+// Prefix public media paths in the production deployment.
+
+const mediaUrl = (path: string) =>
+  `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${path}`;
+
 export const assets = sampleAssets;
 export type Asset = (typeof assets)[number];
+
 export function MediaImage({
   index,
   className = "",
@@ -33,57 +42,77 @@ export function MediaImage({
   interactive?: boolean;
 }) {
   const [frame, setFrame] = useState<number | null>(null);
+
+  const thumbnail = mediaUrl(`/assets/media-${index}.webp`);
+  const scrubSheet = mediaUrl(`/assets/scrub-${index}.webp`);
+  const video = mediaUrl(assets[index].video);
+
   return (
     <span
-      onPointerMove={
-        interactive
-          ? undefined
-          : (event) => {
-              const bounds = event.currentTarget.getBoundingClientRect();
-              setFrame(
-                Math.min(
-                  11,
-                  Math.max(
-                    0,
-                    Math.floor(
-                      ((event.clientX - bounds.left) / bounds.width) * 12,
-                    ),
-                  ),
-                ),
-              );
-            }
-      }
-      onPointerLeave={() => setFrame(null)}
       className={`media-image media-${index} ${className}`}
+      onPointerMove={(event) => {
+        if (interactive) return;
+        if (event.pointerType === "touch") return;
+
+        const rect = event.currentTarget.getBoundingClientRect();
+        if (!rect.width) return;
+
+        const progress = Math.max(
+          0,
+          Math.min(1, (event.clientX - rect.left) / rect.width),
+        );
+
+        setFrame(Math.min(11, Math.floor(progress * 12)));
+      }}
+      onPointerLeave={() => setFrame(null)}
+      style={{
+        position: "relative",
+        display: "block",
+        overflow: "hidden",
+      }}
     >
       <Image
-        src={`/assets/media-${index}.webp`}
-        alt={assets[index].title + " — supplied sample footage"}
-        fill
-        sizes="(max-width: 720px) 50vw, 500px"
-        loader={({ width }) =>
-          `/assets/media-${index}${width <= 400 ? "-small" : ""}.webp`
-        }
-        priority={priority}
-        style={{ objectFit: "cover" }}
+        width={800}
+        height={450}
+        src={thumbnail}
+        alt={`${assets[index].title} — sample footage`}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          pointerEvents: "none",
+        }}
       />
+
       {interactive ? (
         <video
           className="sample-video"
           controls
           playsInline
           preload="metadata"
-          poster={`/assets/media-${index}.webp`}
-          src={assets[index].video}
+          poster={thumbnail}
+          src={video}
           aria-label={`Play ${assets[index].title}`}
         />
       ) : (
         frame !== null && (
           <span
-            className="scrub-frame"
+            aria-hidden="true"
             style={{
-              backgroundImage: `url(/assets/scrub-${index}.webp)`,
+              position: "absolute",
+              inset: 0,
+              zIndex: 3,
+              display: "block",
+              backgroundImage: `url("${scrubSheet}")`,
+              backgroundSize: "1200% 100%",
               backgroundPosition: `${(frame / 11) * 100}% center`,
+              backgroundRepeat: "no-repeat",
+              pointerEvents: "none",
             }}
           />
         )
@@ -91,35 +120,46 @@ export function MediaImage({
     </span>
   );
 }
+
 export default function LibraryDemo() {
   const [query, setQuery] = useState("");
   const [library, setLibrary] = useState("All libraries");
-  const [tag, setTag] = useState("All tags");
+  const [sampleFilter, setSampleFilter] = useState<SampleFilter>(emptyFilter);
   const [list, setList] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
   const [detail, setDetail] = useState<Asset | null>(null);
   const [notice, setNotice] = useState("");
-  const [filters, setFilters] = useState(false);
+
   const dialogRef = useRef<HTMLDialogElement>(null);
+
   useEffect(() => {
-    if (detail && dialogRef.current && !dialogRef.current.open)
+    if (detail && dialogRef.current && !dialogRef.current.open) {
       dialogRef.current.showModal();
+    }
   }, [detail]);
+
   const results = assets.filter(
     (a) =>
       (library === "All libraries" || a.library === library) &&
-      (tag === "All tags" || a.tags.includes(tag)) &&
+      (sampleFilter.tag === "All tags" ||
+        (sampleFilter.mode === "include"
+          ? a.tags.includes(sampleFilter.tag)
+          : !a.tags.includes(sampleFilter.tag))) &&
+      a.duration >= sampleFilter.min &&
+      (sampleFilter.max === 180 || a.duration <= sampleFilter.max) &&
       [a.title, a.file, ...a.tags, a.person, a.location]
         .join(" ")
         .toLowerCase()
         .includes(query.toLowerCase()),
   );
+
   function select(title: string) {
     setSelected((prev) =>
       prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title],
     );
     setNotice("");
   }
+
   return (
     <div className="product-window" id="library-demo">
       <div className="window-bar">
@@ -128,26 +168,34 @@ export default function LibraryDemo() {
           <i />
           <i />
         </div>
+
         <span>
-          <HardDrive size={12} /> Local installation
+          <HardDrive size={12} />
+          Local installation
         </span>
+
         <span className="illustrative">
           Interactive demo · real sample footage
         </span>
       </div>
+
       <div className="demo-shell">
         <aside className="demo-sidebar">
           <Image
-            src="/assets/logo-optimized.png"
+            src={mediaUrl("/assets/logo-optimized.png")}
             width={127}
             height={36}
             alt="Framepath"
           />
+
           <div className="workspace-pill">
-            <span className="dot" /> Media workspace
+            <span className="dot" />
+            Media workspace
             <small>On your infrastructure</small>
           </div>
+
           <span className="tiny-label">WORKSPACE</span>
+
           {[
             [Film, "Library"],
             [Layers, "Collections"],
@@ -157,6 +205,7 @@ export default function LibraryDemo() {
             [Folder, "Projects"],
           ].map(([Icon, label], i) => {
             const C = Icon as typeof Film;
+
             return (
               <span
                 className={i === 0 ? "demo-nav active" : "demo-nav"}
@@ -167,41 +216,54 @@ export default function LibraryDemo() {
               </span>
             );
           })}
+
           <div className="sidebar-foot">
             <HardDrive size={16} />
             <span>
-              Local-first by design<small>Your media stays yours.</small>
+              Local-first by design
+              <small>Your media stays yours.</small>
             </span>
           </div>
         </aside>
+
         <div className="demo-content">
           <div className="demo-heading">
             <div>
               <span className="tiny-label">THE COMPLETE PICTURE</span>
+
               <h3>
                 Your media library <span>{results.length}</span>
               </h3>
             </div>
+
             <span className="status-pill">
-              <span className="dot" /> On-premises
+              <span className="dot" />
+              On-premises
             </span>
           </div>
+
           <label className="demo-search">
             <Search size={18} />
+
             <span className="sr-only">
               Search sample footage by title, tags, people or location
             </span>
+
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Try ‘drone’, ‘music’, or ‘Joe’"
             />
+
             <kbd>⌕</kbd>
           </label>
+
           <div className="demo-toolbar">
             <span className="all-media">All media</span>
+
             <label>
               <span className="sr-only">Filter example library</span>
+
               <select
                 value={library}
                 onChange={(e) => setLibrary(e.target.value)}
@@ -214,15 +276,12 @@ export default function LibraryDemo() {
                 ))}
               </select>
             </label>
-            <button
-              aria-label="Show tag filters"
-              aria-expanded={filters}
-              onClick={() => setFilters(!filters)}
-              className={filters ? "active" : ""}
-            >
-              <SlidersHorizontal size={14} />
-              <span>Filters</span>
-            </button>
+
+            <SampleFilters
+              tags={[...new Set(assets.flatMap((a) => a.tags))]}
+              value={sampleFilter}
+              onApply={setSampleFilter}
+            />
             <button
               className="view-button"
               aria-label={list ? "Switch to grid view" : "Switch to list view"}
@@ -231,26 +290,20 @@ export default function LibraryDemo() {
               {list ? <Grid2X2 size={16} /> : <List size={16} />}
             </button>
           </div>
-          {filters && (
+
+          {(sampleFilter.tag !== "All tags" ||
+            sampleFilter.min > 0 ||
+            sampleFilter.max < 180) && (
             <div className="demo-filters">
-              <label>
-                Tag{" "}
-                <select value={tag} onChange={(e) => setTag(e.target.value)}>
-                  {["All tags", ...new Set(assets.flatMap((a) => a.tags))].map(
-                    (t) => (
-                      <option key={t}>{t}</option>
-                    ),
-                  )}
-                </select>
-              </label>
-              <button
-                onClick={() => {
-                  setQuery("");
-                  setTag("All tags");
-                  setLibrary("All libraries");
-                }}
-              >
-                Reset filters
+              <span>
+                {sampleFilter.tag !== "All tags"
+                  ? `${sampleFilter.mode}: ${sampleFilter.tag} · `
+                  : ""}
+                {sampleFilter.min}s–
+                {sampleFilter.max === 180 ? "180+s" : `${sampleFilter.max}s`}
+              </span>
+              <button onClick={() => setSampleFilter({ ...emptyFilter })}>
+                Clear filters
               </button>
             </div>
           )}
@@ -260,6 +313,7 @@ export default function LibraryDemo() {
                 ? `${selected.length} selected`
                 : `${results.length} example assets`}
             </span>
+
             <span>
               {selected.length ? (
                 <button onClick={() => setSelected([])}>Clear selection</button>
@@ -268,11 +322,14 @@ export default function LibraryDemo() {
               )}
             </span>
           </div>
+
           <div className={list ? "media-grid list-view" : "media-grid"}>
             {results.map((a) => (
               <article
                 key={a.file}
-                className={`media-card ${selected.includes(a.title) ? "selected" : ""}`}
+                className={`media-card ${
+                  selected.includes(a.title) ? "selected" : ""
+                }`}
               >
                 <div className="thumbnail">
                   <button
@@ -285,13 +342,17 @@ export default function LibraryDemo() {
                       priority={a.index < 3}
                       interactive={false}
                     />
+
                     <span className="preview-hint">
-                      <Play size={18} /> Play clip
+                      <Play size={18} />
+                      Play clip
                     </span>
+
                     <span className="tech-overlay">
                       {a.size} · <b>{a.quality}</b> · {a.time}
                     </span>
                   </button>
+
                   <label className="card-checkbox">
                     <input
                       type="checkbox"
@@ -301,37 +362,46 @@ export default function LibraryDemo() {
                     />
                   </label>
                 </div>
+
                 <div className="card-body">
                   <button className="card-title" onClick={() => setDetail(a)}>
                     {a.title}
                   </button>
+
                   <div className="card-meta">
                     <span className="metadata-tooltip" tabIndex={0}>
-                      <Tags size={12} /> {a.tags.length}
+                      <Tags size={12} />
+                      {a.tags.length}
                       <span role="tooltip">{a.tags.join(" · ")}</span>
                     </span>
+
                     <span>
                       {a.person && (
                         <>
-                          <Users size={12} /> 1
+                          <Users size={12} />1
                         </>
                       )}
                     </span>
+
                     <span className="dot" />
                   </div>
                 </div>
               </article>
             ))}
           </div>
+
           {!results.length && (
             <div className="empty-state">
               <Search />
+
               <h4>No example assets match.</h4>
+
               <p>Try another keyword or reset the filters.</p>
+
               <button
                 onClick={() => {
                   setQuery("");
-                  setTag("All tags");
+                  setSampleFilter({ ...emptyFilter });
                   setLibrary("All libraries");
                 }}
               >
@@ -339,12 +409,14 @@ export default function LibraryDemo() {
               </button>
             </div>
           )}
+
           <p className="demo-note" aria-live="polite">
             {notice ||
               "Search or filter the clips, move across a thumbnail to scrub, then open a clip to play."}
           </p>
         </div>
       </div>
+
       {detail && (
         <dialog
           ref={dialogRef}
@@ -360,34 +432,44 @@ export default function LibraryDemo() {
           >
             <X />
           </button>
+
           <MediaImage index={detail.index} />
+
           <div className="asset-dialog-body">
             <span className="eyebrow">Sample footage</span>
+
             <h3>{detail.title}</h3>
+
             <p>
               {detail.file} · {detail.quality} · {detail.time} · {detail.size}
             </p>
+
             <div className="chips">
               {detail.tags.map((t) => (
                 <span key={t}>{t}</span>
               ))}
             </div>
+
             {(detail.location || detail.person) && (
               <p>
-                <Users size={14} /> {detail.person || detail.location}
+                <Users size={14} />
+                {detail.person || detail.location}
               </p>
             )}
+
             <p className="demo-note">
               Play, pause, seek, adjust audio, or expand the player. This sample
               uses an optimized browser copy; your supplied original stays
               unchanged. Tags and library groupings are demonstration metadata.
             </p>
+
             <Link
               href="#features"
               className="text-link"
               onClick={() => setDetail(null)}
             >
-              Explore preview & retrieval <ArrowUpRight size={16} />
+              Explore preview &amp; retrieval
+              <ArrowUpRight size={16} />
             </Link>
           </div>
         </dialog>
