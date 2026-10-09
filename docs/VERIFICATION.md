@@ -69,3 +69,7 @@ The public marketing route is `https://oddform.works/framepath/`, which needs th
 ## Media path and hero correction
 
 Restored the interactive sample library to the hero and moved the genuine application capture into the product story. Public media paths now apply the deployment prefix only once: the export rewrites asset literals and previously runtime concatenation added a second prefix, breaking sprite sheets and video sources. Both sample media and product walkthroughs use the shared idempotent helper.
+
+## Current-feature storytelling revision
+
+Per user direction, removed repeated unavailable-feature disclaimers and consolidated future capabilities into compact roadmap sections. Removed unshipped Pro/Connect/Managed feature promotions rather than presenting them as available. Main feature copy, FAQs, and deployment controls now describe current capabilities; preserved real demonstrations and responsible deployment guidance.

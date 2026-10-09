@@ -351,7 +351,6 @@ export default function Home() {
           </div>
           <p className="proof-note">
             Local transcription is optional. The library works without AI.
-            Commercial entitlements and license terms are not yet finalized.
           </p>
           <Link href="/resources/#transcription" className="text-link">
             Explore local transcription <ArrowUpRight size={16} />
@@ -481,14 +480,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="coming-inline">
-              <span className="roadmap-badge">PLANNED INGEST</span>
-              <p>
-                Upload through Framepath, Incoming review, Shoots, and verified
-                copy ingest are on the roadmap. Today, copy media to connected
-                storage and scan it into the catalog.
-              </p>
-            </div>
           </div>
         </section>
         <section className="organization-proof wrap section-space">
@@ -522,81 +513,15 @@ export default function Home() {
             picker does not expose a remote server’s filesystem.
           </p>
         </section>
-        <section className="roadmap wrap section-space" id="roadmap">
-          <div className="roadmap-copy">
-            <span className="eyebrow">THE NEXT CHAPTER · IN DEVELOPMENT</span>
-            <h2>
-              Find the moment.
-              <br />
-              <span>Not just the file.</span>
-            </h2>
-            <p>
-              The vision: search inside long recordings and surface the exact
-              useful shot. Automatic shot detection, visual descriptions, and
-              semantic search remain planned. Optional local Whisper
-              transcription is already implemented for finding spoken words.
-            </p>
-            <Link href="/resources/#roadmap" className="text-link">
-              See what’s built and what’s next <ArrowUpRight size={16} />
-            </Link>
-          </div>
-          <div className="segment-visual">
-            <div className="segment-header">
-              <span>summit17_music_clip_2.mov · 0:11</span>
-              <span className="roadmap-badge">CONCEPT PREVIEW</span>
-            </div>
-            <MediaImage index={1} />
-            <div className="segment-timeline">
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <span />
-            </div>
-            <div className="segment-match">
-              <Search size={19} />
-              <div>
-                <b>Live music at Summit 17</b>
-                <span>Concept only · sample footage is playable</span>
-              </div>
-            </div>
-          </div>
-          <div className="roadmap-notes">
-            <article>
-              <span>VISUAL AI · PLANNED</span>
-              <h3>Intelligence on your terms.</h3>
-              <p>
-                Scene descriptions, OCR, semantic search, and authorized face
-                identification are planned for customer hardware.
-              </p>
-            </article>
-            <article>
-              <span>CLOUD AI · OPTIONAL FUTURE SERVICE</span>
-              <h3>More compute, with consent.</h3>
-              <p>
-                When enabled, relevant audio, keyframes, previews, or
-                temporarily transmitted media may leave your premises for
-                processing. Cloud AI will not be required for the core library.
-              </p>
-            </article>
-            <article>
-              <span>MEDIA IDENTITY · CURRENT + ROADMAP</span>
-              <h3>Know what you already have.</h3>
-              <p>
-                Sampled fingerprints help recognize some within-root moves.
-                Full-content duplicate proof and visual source matching remain
-                future work.
-              </p>
-            </article>
-          </div>
+        <section className="wrap section-space compact-roadmap" id="roadmap">
+          <span className="eyebrow">LOOKING AHEAD</span>
+          <h2>More possibilities for your archive.</h2>
+          <p>
+            Future updates are planned to bring automatic shot detection, visual
+            search, verified media ingest, and simpler remote-access
+            administration. These capabilities are on the roadmap, with no
+            release dates announced.
+          </p>
         </section>
         <section id="deployment" className="deployment section-space">
           <div className="wrap">
@@ -658,9 +583,8 @@ export default function Home() {
                 </p>
                 <p className="muted">
                   Remote HTTPS requires appropriate network and TLS
-                  configuration. SSO, OIDC, LDAP, and MFA are planned. Back up
-                  originals, the database, and configuration according to your
-                  organization’s policies.
+                  configuration. Back up originals, the database, and
+                  configuration according to your organization’s policies.
                 </p>
                 <Link href="/resources/#security" className="text-link">
                   Read deployment & security notes <ArrowUpRight size={15} />
@@ -696,9 +620,8 @@ export default function Home() {
               </h2>
               <p>
                 Tell us about your archive, hardware, and team. We’ll discuss
-                the right deployment. Commercial packaging and license terms are
-                being finalized. Optional local Whisper transcription is
-                implemented; its plan entitlement has not yet been assigned.
+                the right deployment and provide a quote tailored to your
+                organization.
               </p>
             </div>
             <div className="plan-grid">
@@ -739,96 +662,11 @@ export default function Home() {
                   Discuss a deployment <ArrowUpRight size={16} />
                 </Link>
               </article>
-              <article className="pro-plan">
-                <span className="eyebrow">PLANNED PREMIUM SOFTWARE</span>
-                <h3 className="plan-lockup">
-                  <span className="plan-logo">
-                    <Image
-                      src="/assets/logo-optimized.png"
-                      width={170}
-                      height={41}
-                      alt="Framepath"
-                    />
-                  </span>
-                  <span>Pro</span>
-                </h3>
-                <p className="plan-subtitle">Advanced local intelligence</p>
-                <p>
-                  Planned premium features that can process on customer
-                  hardware.
-                </p>
-                <ul>
-                  <li>
-                    <Check />
-                    Semantic search & intelligent cataloging
-                  </li>
-                  <li>
-                    <Check />
-                    Planned shot analysis & visual descriptions
-                  </li>
-                  <li>
-                    <Check />
-                    Planned visual AI processing
-                  </li>
-                  <li>
-                    <Check />
-                    License model to be confirmed
-                  </li>
-                </ul>
-                <Link className="button" href="#demo">
-                  Talk about Pro <ArrowUpRight size={16} />
-                </Link>
-              </article>
-              <article>
-                <span className="eyebrow">OPTIONAL · PROPOSED SERVICES</span>
-                <h3 className="plan-lockup">
-                  <span className="plan-logo">
-                    <Image
-                      src="/assets/logo-optimized.png"
-                      width={170}
-                      height={41}
-                      alt="Framepath"
-                    />
-                  </span>
-                  <span>Managed</span>
-                </h3>
-                <p className="plan-subtitle">
-                  Help operating your installation
-                </p>
-                <p className="plan-connect">
-                  Includes Framepath <strong>Connect</strong>
-                </p>
-                <p>
-                  Deployment and ongoing services scoped to your organization.
-                </p>
-                <ul>
-                  <li>
-                    <Check />
-                    Support, maintenance & updates
-                  </li>
-                  <li>
-                    <Check />
-                    Health alerts & capacity reporting
-                  </li>
-                  <li>
-                    <Check />
-                    Catalog/config backup planning
-                  </li>
-                  <li>
-                    <Check />
-                    Planned managed DNS & connectivity
-                  </li>
-                </ul>
-                <Link className="button secondary" href="#demo">
-                  Request pricing <ArrowUpRight size={16} />
-                </Link>
-              </article>
             </div>
             <p className="pricing-note">
-              Managed services are optional. Canceling a managed subscription is
-              not intended to disable the core local library. Original-media
-              backups remain your responsibility. Hardware, deployment, and
-              future cloud AI may be quoted separately.
+              Discuss hardware, installation, and support requirements with
+              Oddform. Back up original media according to your organization’s
+              policies.
             </p>
           </div>
         </section>
@@ -852,15 +690,15 @@ export default function Home() {
               ],
               [
                 "Does Framepath need AI to work?",
-                "No. Browsing, metadata, keyword search, previews, local accounts, and original retrieval form the core workflow. Optional local Whisper transcription is implemented. Semantic visual search and wider AI analysis remain planned.",
+                "No. Browsing, metadata, keyword search, previews, local accounts, and original retrieval form the core workflow. Optional local Whisper transcription is implemented.",
               ],
               [
                 "Can people work remotely?",
-                "With an appropriately configured direct HTTPS path, authorized browsers can connect to your installation. Your IT team must configure reachability, firewall rules, TLS, and a reverse proxy. Planned Connect tooling is an optional convenience.",
+                "With an appropriately configured direct HTTPS path, authorized browsers can connect to your installation. Your IT team must configure reachability, firewall rules, TLS, and a reverse proxy.",
               ],
               [
                 "What is available today?",
-                "The active-development application has storage scanning, a searchable catalog, generated previews, metadata, library permissions, bulk editing, original downloads, and optional local Whisper with transcript search, timestamp seeking, corrections, and captions. Managed upload ingest, advanced duplicate matching, semantic search, automatic shot detection, and managed connectivity remain on the roadmap.",
+                "The active-development application has storage scanning, a searchable catalog, generated previews, metadata, library permissions, bulk editing, original downloads, and optional local Whisper with transcript search, timestamp seeking, corrections, and captions.",
               ],
             ].map(([q, a]) => (
               <details key={q}>

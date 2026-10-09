@@ -6,7 +6,6 @@ import {
   Check,
   ChevronRight,
   HardDrive,
-  Globe,
   Network,
   ArrowRight,
   Mail,
@@ -154,18 +153,6 @@ export function DeploymentModes() {
         "IT-assisted network and HTTPS configuration",
         "Local authorization remains in Framepath",
         "No Oddform-operated video relay",
-      ],
-    },
-    {
-      name: "Framepath Connect",
-      icon: Globe,
-      label: "PLANNED · OPTIONAL SERVICE",
-      title: "A simpler way to manage connectivity.",
-      copy: "Planned admin tooling for a customer-branded subdomain, DNS provisioning, and reachability status. Connect helps manage the connection; it does not host originals or replace local user accounts.",
-      points: [
-        "Example: yourteam.framepath.ai",
-        "Direct HTTPS still needs network setup",
-        "Core local access remains independent",
       ],
     },
   ];

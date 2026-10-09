@@ -3674,3 +3674,20 @@ h2 span:hover {
     margin-bottom: 28px;
   }
 }
+
+.compact-roadmap {
+  max-width: 1000px;
+}
+.compact-roadmap h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  margin: 18px 0;
+}
+.compact-roadmap p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.plan-grid {
+  grid-template-columns: minmax(0, 680px);
+  justify-content: center;
+}

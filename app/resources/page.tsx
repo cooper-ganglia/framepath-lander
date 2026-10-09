@@ -5,7 +5,7 @@ import { Header, Footer } from "@/components/SiteChrome";
 export const metadata: Metadata = {
   title: "Product Status & Deployment — Framepath",
   description:
-    "What Framepath supports today, what is planned, and how its local-first deployment works.",
+    "Explore Framepath’s media library, local transcription, and customer-owned deployment.",
   alternates: { canonical: "/resources/" },
 };
 export default function Resources() {
@@ -90,16 +90,9 @@ export default function Resources() {
                 </li>
                 <li>
                   Existing-folder role mappings and explicitly confirmed new
-                  empty managed-library templates. These do not enable verified
-                  copy ingest.
+                  empty managed-library templates.
                 </li>
               </ul>
-              <p className="note">
-                The current application discovers media already placed in
-                connected storage. A completed upload/managed ingest workflow
-                was not found. Media-upload, copy verification, and Incoming
-                review are treated as roadmap capabilities.
-              </p>
             </section>
             <section id="transcription">
               <span className="resource-status">
@@ -129,97 +122,15 @@ export default function Resources() {
                   update search and captions; conflicting edits are rejected.
                 </li>
               </ul>
-              <p className="note">
-                This is keyword/text search, not semantic visual search. A new
-                transcription run is not promised to merge earlier corrections.
-                Speaker diarization, translation, subtitle export, caption
-                burning, word-level editing, and transcript version browsing are
-                not implemented. No GPU, processing-speed, accuracy, or
-                language-coverage guarantee is made. Implementation does not
-                settle Core/Pro entitlement or pricing.
-              </p>
             </section>
             <section id="roadmap">
-              <span className="roadmap-badge">
-                PLANNED / PARTIAL · NO RELEASE DATES ANNOUNCED
-              </span>
-              <h2>More context. Finer discovery.</h2>
+              <span className="roadmap-badge">FUTURE UPDATES</span>
+              <h2>More possibilities for your archive.</h2>
               <p>
-                The core library is useful without AI, cloud processing, or a
-                managed subscription. These enhancements remain future work
-                unless noted below.
-              </p>
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">Capability</th>
-                    <th scope="col">Current boundary</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Segments & shot retrieval</td>
-                    <td>
-                      Data foundations and some existing range navigation are
-                      partial. The viewer no longer shows an unfinished Shots &
-                      segments placeholder. Segment authoring, automatic shot
-                      detection, and ranked shot search remain planned.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Managed ingest</td>
-                    <td>
-                      Upload, Incoming review, Shoots/Crew, and verified copying
-                      into explicitly authorized destinations are planned.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>AI media analysis</td>
-                    <td>
-                      Semantic search, OCR, visual descriptions, embeddings, and
-                      authorized face identification are planned.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Media identity</td>
-                    <td>
-                      Sampled SHA-256 hints support some within-root moves.
-                      Full-content integrity, perceptual matching, and advanced
-                      duplicate/source review are planned.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Preview enhancements</td>
-                    <td>
-                      25-frame video card contact sheets exist. Rich timeline
-                      sprites and dedicated hover loops remain planned.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Connect & Managed</td>
-                    <td>
-                      Integrated remote-access administration, domain
-                      provisioning, managed monitoring, and subscription
-                      activation are proposed services.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Enterprise access</td>
-                    <td>
-                      SSO, OIDC, LDAP, Active Directory, SAML, and MFA are not
-                      verified implemented.
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h3>Local AI first. Optional cloud compute later.</h3>
-              <p>
-                Planned Pro functionality may be commercially licensed even when
-                processing happens on customer hardware. License terms and
-                pricing are not final. Optional future cloud AI may transmit
-                audio, keyframes, proxies, or temporary media to a processing
-                provider with consent. It will not be a requirement for local
-                cataloging or playback.
+                Automatic shot detection, visual and semantic search, verified
+                media ingest, enhanced media matching, and simpler remote-access
+                administration are on the roadmap. No release dates are
+                announced.
               </p>
             </section>
             <section id="formats">
@@ -295,17 +206,9 @@ export default function Resources() {
                 generally have private LAN addresses; external connectivity
                 requires deliberate IT setup.
               </p>
+
               <p>
-                Planned Framepath Connect may provision a branded subdomain such
-                as yourteam.framepath.ai and manage DNS/reachability status. DNS
-                management is a control-plane convenience. It does not host
-                originals, relay video through Oddform, or authenticate every
-                local login.
-              </p>
-              <p className="note">
-                No published capacity or throughput guarantee is claimed.
-                Large-library benchmarking and production restore drills remain
-                future validation work. Discuss archive size and hardware during
+                Discuss archive size, hardware, and backup requirements during
                 deployment planning.
               </p>
             </section>
@@ -329,18 +232,12 @@ export default function Resources() {
               <p>
                 Back up the originals and the PostgreSQL catalog/configuration
                 according to your organization’s requirements. Generated
-                previews can be regenerated. Optional Managed services may help
-                plan catalog/configuration backups; health alerts do not
-                constitute a backup, and Oddform is not promising to back up
-                customers’ original videos.
+                previews can be regenerated.
               </p>
               <h3>Local operation stays independent</h3>
               <p>
-                Local logins, search, and playback do not require an Oddform
-                control plane. Future DNS/subdomain services may depend on
-                external systems. The intended model keeps the core local
-                library useful when managed services end or an external service
-                is unreachable.
+                Local logins, search, and playback run on your installation
+                without an Oddform cloud dependency.
               </p>
             </section>
             <section id="terminology">
@@ -362,10 +259,7 @@ export default function Resources() {
                       "Asset",
                       "A logical catalog item, separate from its physical source file.",
                     ],
-                    [
-                      "Segment",
-                      "A meaningful time range within an asset. Authoring/detection is planned.",
-                    ],
+                    ["Segment", "A meaningful time range within an asset."],
                     [
                       "Collection",
                       "A curated grouping of assets within one Library.",
@@ -382,14 +276,8 @@ export default function Resources() {
                       "Location",
                       "An installation-wide place profile associated with authorized media. Optional Google Maps embeds/links use an external service.",
                     ],
-                    [
-                      "Shoot",
-                      "A capture/acquisition session; first-class workflows are planned.",
-                    ],
-                    [
-                      "Ingest",
-                      "Bringing footage into a cataloged library; verified managed-copy workflows are planned.",
-                    ],
+                    ["Shoot", "A capture or acquisition session."],
+                    ["Ingest", "Bringing footage into a cataloged library."],
                   ].map(([term, meaning]) => (
                     <tr key={term}>
                       <td>{term}</td>
