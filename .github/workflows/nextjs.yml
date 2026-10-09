@@ -38,7 +38,7 @@ jobs:
       - name: Build Next.js website
         env:
           GITHUB_PAGES: "true"
-          NEXT_PUBLIC_BASE_PATH: "/framepath-lander"
+          NEXT_PUBLIC_BASE_PATH: "/framepath"
         run: npm run build
 
       - name: Fix static asset paths
@@ -48,7 +48,7 @@ jobs:
           import re
 
           root = Path("out")
-          prefix = b"/framepath-lander"
+          prefix = b"/framepath"
           pattern = re.compile(
               rb"(?<![A-Za-z0-9_./-])/assets/"
           )

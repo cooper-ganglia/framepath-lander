@@ -61,3 +61,7 @@ Lint, TypeScript and static build passed; export validation checked 118 asset re
 Only marketing files were edited. Product application, original media and references remain unchanged. Existing domain configuration, private Sites audience, approved typography/gradients, navy pricing cards, email draft form and branded sharing image were preserved.
 
 The existing GitHub Pages workflow used `/framepath`, which produced a live CSS 404 at the repository Pages URL. Corrected its build and asset prefix to `/framepath-lander`, matching the actual repository URL; no DNS or hosting audience changes.
+
+## Oddform route correction
+
+The public marketing route is `https://oddform.works/framepath/`, which needs the `/framepath` build prefix. The prior direct GitHub Pages check missed this existing proxy route. Restored the original prefix and updated the public Open Graph URL to the Oddform route.

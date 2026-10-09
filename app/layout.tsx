@@ -12,7 +12,7 @@ export const metadata: Metadata = {
       "Find any shot your organization has ever captured. Meet Framepath, the local-first media asset management platform by Oddform.",
     url:
       process.env.GITHUB_PAGES === "true"
-        ? "https://cooper-ganglia.github.io/framepath-lander/"
+        ? "https://oddform.works/framepath/"
         : "https://framepath-marketing-sample.cooper-ganglia.chatgpt.site/",
     siteName: "Framepath",
     type: "website",

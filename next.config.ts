@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const basePath = process.env.GITHUB_PAGES === "true" ? "/framepath-lander" : "";
+const basePath = process.env.GITHUB_PAGES === "true" ? "/framepath" : "";
 
 const config: NextConfig = {
   turbopack: { root: process.cwd() },
